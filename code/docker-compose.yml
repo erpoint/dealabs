@@ -4,7 +4,7 @@ services:
         build: .docker/apache
         container_name: lpa_sf6_apache
         ports:
-          - "8081:80"
+          - "1234:80"
         volumes:
           - .docker/config/vhosts:/etc/apache2/sites-enabled
           - .:/var/www/lpa_sf6

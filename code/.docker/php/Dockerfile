@@ -1,5 +1,6 @@
 FROM php:8.1.0-fpm
-
+ENV http_proxy="http://193.49.118.36:8080"
+ENV https_proxy="http://193.49.118.36:8080"
 RUN apt-get update \
     && apt-get install -y --no-install-recommends vim curl debconf subversion git apt-transport-https apt-utils \
     build-essential locales acl mailutils wget nodejs zip unzip libpng-dev libzip4 libzip-dev \
@@ -14,8 +15,8 @@ RUN apt install -y libldap2-dev
 
 RUN docker-php-ext-install pdo pdo_mysql zip
 
-RUN pecl install xdebug \
-    && docker-php-ext-enable xdebug
+#RUN pecl install xdebug \
+#    && docker-php-ext-enable xdebug
 
 COPY php.ini /usr/local/etc/php/php.ini
 COPY php-fpm-pool.conf 	/usr/local/etc/php/pool.d/www.conf
