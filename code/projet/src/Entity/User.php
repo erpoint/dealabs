@@ -6,32 +6,40 @@ use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`user`')]
-class User
+class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 180, unique: true)]
     private ?string $email = null;
+
+    #[ORM\Column]
+    private array $roles = [];
+
+    /**
+     * @var string The hashed password
+     */
+    #[ORM\Column]
+    private ?string $password = null;
 
     #[ORM\Column(length: 255)]
     private ?string $login = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $password = null;
-
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt = null;
 
-    #[ORM\OneToMany(mappedBy: 'commentator', targetEntity: Comment::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'theuser', targetEntity: Comment::class, orphanRemoval: true)]
     private Collection $comments;
 
-    #[ORM\OneToMany(mappedBy: 'owner', targetEntity: Deal::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'dealowner', targetEntity: Deal::class, orphanRemoval: true)]
     private Collection $deals;
 
     public function __construct()
@@ -57,6 +65,59 @@ class User
         return $this;
     }
 
+    /**
+     * A visual identifier that represents this user.
+     *
+     * @see UserInterface
+     */
+    public function getUserIdentifier(): string
+    {
+        return (string) $this->email;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getRoles(): array
+    {
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
+    }
+
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+
+    /**
+     * @see PasswordAuthenticatedUserInterface
+     */
+    public function getPassword(): string
+    {
+        return $this->password;
+    }
+
+    public function setPassword(string $password): self
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function eraseCredentials()
+    {
+        // If you store any temporary, sensitive data on the user, clear it here
+        // $this->plainPassword = null;
+    }
+
     public function getLogin(): ?string
     {
         return $this->login;
@@ -65,18 +126,6 @@ class User
     public function setLogin(string $login): self
     {
         $this->login = $login;
-
-        return $this;
-    }
-
-    public function getPassword(): ?string
-    {
-        return $this->password;
-    }
-
-    public function setPassword(string $password): self
-    {
-        $this->password = $password;
 
         return $this;
     }
@@ -105,7 +154,7 @@ class User
     {
         if (!$this->comments->contains($comment)) {
             $this->comments->add($comment);
-            $comment->setCommentator($this);
+            $comment->setTheuser($this);
         }
 
         return $this;
@@ -115,8 +164,8 @@ class User
     {
         if ($this->comments->removeElement($comment)) {
             // set the owning side to null (unless already changed)
-            if ($comment->getCommentator() === $this) {
-                $comment->setCommentator(null);
+            if ($comment->getTheuser() === $this) {
+                $comment->setTheuser(null);
             }
         }
 
@@ -135,7 +184,7 @@ class User
     {
         if (!$this->deals->contains($deal)) {
             $this->deals->add($deal);
-            $deal->setOwner($this);
+            $deal->setDealowner($this);
         }
 
         return $this;
@@ -145,8 +194,8 @@ class User
     {
         if ($this->deals->removeElement($deal)) {
             // set the owning side to null (unless already changed)
-            if ($deal->getOwner() === $this) {
-                $deal->setOwner(null);
+            if ($deal->getDealowner() === $this) {
+                $deal->setDealowner(null);
             }
         }
 

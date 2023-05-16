@@ -21,11 +21,11 @@ class Comment
 
     #[ORM\ManyToOne(inversedBy: 'comments')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?User $commentator = null;
+    private ?Deal $deal = null;
 
     #[ORM\ManyToOne(inversedBy: 'comments')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Deal $deal = null;
+    private ?User $theuser = null;
 
     public function getId(): ?int
     {
@@ -56,18 +56,6 @@ class Comment
         return $this;
     }
 
-    public function getCommentator(): ?User
-    {
-        return $this->commentator;
-    }
-
-    public function setCommentator(?User $commentator): self
-    {
-        $this->commentator = $commentator;
-
-        return $this;
-    }
-
     public function getDeal(): ?Deal
     {
         return $this->deal;
@@ -76,6 +64,18 @@ class Comment
     public function setDeal(?Deal $deal): self
     {
         $this->deal = $deal;
+
+        return $this;
+    }
+
+    public function getTheuser(): ?User
+    {
+        return $this->theuser;
+    }
+
+    public function setTheuser(?User $theuser): self
+    {
+        $this->theuser = $theuser;
 
         return $this;
     }

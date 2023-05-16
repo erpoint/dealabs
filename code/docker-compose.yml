@@ -18,7 +18,7 @@ services:
         build: .docker/php
         container_name: lpa_sf6_php
         volumes:
-          - .:/var/www/lpa_sf6
+          - ./projet:/var/www/lpa_sf6
         environment:
           - mailcatcher_host=lpa_sf6_mailcatcher
         depends_on:
