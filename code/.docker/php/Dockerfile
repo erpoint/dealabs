@@ -1,6 +1,4 @@
 FROM php:8.1.0-fpm
-ENV http_proxy="http://193.49.118.36:8080"
-ENV https_proxy="http://193.49.118.36:8080"
 RUN apt-get update \
     && apt-get install -y --no-install-recommends vim curl debconf subversion git apt-transport-https apt-utils \
     build-essential locales acl mailutils wget nodejs zip unzip libpng-dev libzip4 libzip-dev \
