@@ -1,0 +1,27 @@
+security:
+  password_hashers:
+    App\Entity\User:
+      algorithm: auto
+
+  providers:
+    # used to reload user from session & other features (e.g. switch_user)
+    app_user_provider:
+      entity:
+        class: App\Entity\User
+        property: email
+
+  firewalls:
+    # 'main' is the name of the firewall (can be chosen freely)
+    main:
+      # 'pattern' is a regular expression matched against the incoming
+      # request URL. If there's a match, authentication is triggered
+      lazy: true
+      pattern: ^/login
+      custom_authenticator: App\Security\AppCustomAuthenticator
+      logout:
+        path: app_logout
+        # where to redirect after logout
+        form_login:
+          # "app_login" is the name of the route created previously
+          login_path: app_login
+          check_path: app_login
