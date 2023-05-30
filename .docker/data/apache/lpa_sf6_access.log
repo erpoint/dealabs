@@ -253,3 +253,5 @@
 172.18.0.1 - - [30/May/2023:07:20:01 +0000] "POST /register HTTP/1.1" 500 120367 "http://localhost:1234/register" "Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0"
 172.18.0.1 - - [30/May/2023:07:24:49 +0000] "POST /register HTTP/1.1" 302 692 "http://localhost:1234/register" "Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0"
 172.18.0.1 - - [30/May/2023:07:24:50 +0000] "GET / HTTP/1.1" 200 824 "http://localhost:1234/register" "Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0"
+172.18.0.1 - - [30/May/2023:07:33:17 +0000] "GET / HTTP/1.1" 200 825 "http://localhost:1234/register" "Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0"
+172.18.0.1 - - [30/May/2023:07:33:23 +0000] "GET /logout HTTP/1.1" 500 87141 "-" "Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0"
