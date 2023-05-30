@@ -66,3 +66,11 @@ AH00112: Warning: DocumentRoot [/var/www/lpa_sf6/public] does not exist
 [Tue May 23 07:20:09.897062 2023] [ssl:info] [pid 16:tid 140638019379264] AH01883: Init: Initialized OpenSSL library
 [Tue May 23 07:20:09.898020 2023] [mpm_event:notice] [pid 16:tid 140638019379264] AH00489: Apache/2.4.25 (Debian) OpenSSL/1.0.2u configured -- resuming normal operations
 [Tue May 23 07:20:09.898052 2023] [core:notice] [pid 16:tid 140638019379264] AH00094: Command line: '/usr/sbin/apache2 -D FOREGROUND -e info'
+[Sat May 27 18:42:58.371115 2023] [mpm_event:notice] [pid 17:tid 139819135360320] AH00489: Apache/2.4.56 (Debian) OpenSSL/1.1.1n configured -- resuming normal operations
+[Sat May 27 18:42:58.373211 2023] [core:notice] [pid 17:tid 139819135360320] AH00094: Command line: '/usr/sbin/apache2 -D FOREGROUND -e info'
+[Tue May 30 06:09:22.100487 2023] [core:warn] [pid 10:tid 140550011661632] AH00098: pid file /var/run/apache2/apache2.pid overwritten -- Unclean shutdown of previous Apache run?
+[Tue May 30 06:09:22.101538 2023] [mpm_event:notice] [pid 10:tid 140550011661632] AH00489: Apache/2.4.56 (Debian) OpenSSL/1.1.1n configured -- resuming normal operations
+[Tue May 30 06:09:22.101549 2023] [core:notice] [pid 10:tid 140550011661632] AH00094: Command line: '/usr/sbin/apache2 -D FOREGROUND -e info'
+[Tue May 30 06:34:43.769782 2023] [core:warn] [pid 10:tid 140709125418304] AH00098: pid file /var/run/apache2/apache2.pid overwritten -- Unclean shutdown of previous Apache run?
+[Tue May 30 06:34:43.770320 2023] [mpm_event:notice] [pid 10:tid 140709125418304] AH00489: Apache/2.4.56 (Debian) OpenSSL/1.1.1n configured -- resuming normal operations
+[Tue May 30 06:34:43.770334 2023] [core:notice] [pid 10:tid 140709125418304] AH00094: Command line: '/usr/sbin/apache2 -D FOREGROUND -e info'
