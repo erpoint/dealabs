@@ -4,17 +4,61 @@
 
 {% block body %}
 <style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    .deal-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-gap: 75px;
+    }
+
+    .one-deal {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            width: 325px;
+            border-style: solid;
+            border-radius: 10px;
+            padding: 10px;
+    }
+
+    h1 {
+            display: flex;
+            justify-content: center;
+            margin-right: 10px;
+    }
+
+    .flex-center {
+            display: flex;
+            justify-content: center;
+    }
+
+    .title {
+            font-style: italic;
+            font-weight: bold;
+            font-size: 25px;
+    }
+
+    .degres {
+            color: firebrick;
+            font-weight: bold;
+    }
 </style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/var/www/lpa_sf6/src/Controller/RootController.php'|file_link(0) }}">src/Controller/RootController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/var/www/lpa_sf6/templates/root/index.html.twig'|file_link(0) }}">templates/root/index.html.twig</a></code></li>
-    </ul>
+<div class="flex-center">
+        <h1>Deals</h1>
+        <svg class="icon" width="40px" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img"><path d="M90.72 82.34c4.4 7 1.29 12.66-7 12.66H16.25C8 95 4.88 89.31 9.28 82.34l29.47-46.46V12.5H35A3.75 3.75 0 0135 5h30a3.75 3.75 0 010 7.5h-3.75v23.38zM45.08 39.86L29.14 65h41.72L54.92 39.86l-1.17-1.81V12.5h-7.5v25.55z" fill="currentColor"/></svg>
+</div>
+<div class="flex-center">
+<div class="deal-grid">
+    {% for deal in deals %}
+        <div class="one-deal">
+                <p class="flex-center title">{{ deal.title }}</p>
+                <img class="flex-center" src="{{ deal.image }}">
+                <p class="flex-center">{{ deal.description }}</p>
+                <p class="flex-center">Prix avant réduction : <strong>{{ deal.fullPrice }}€</strong></p>
+                <p class="flex-center">Prix Courant : <strong>{{ deal.currentPrice }}€</strong></p>
+                <p class="flex-center degres">{{ deal.degres }}°</p>
+        </div>
+    {% endfor %}
+</div>
 </div>
 {% endblock %}

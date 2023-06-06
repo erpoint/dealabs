@@ -31,7 +31,7 @@ class AppFixtures extends Fixture
         for ($i = 0; $i < 4; $i++) {
             $deals[$i] = new Deal();
             $deals[$i]->setLink(null);
-            $deals[$i]->setImage("");
+            $deals[$i]->setImage($faker->imageUrl);
             $deals[$i]->setFullPrice($faker->randomFloat(2, 1, 250));
             $deals[$i]->setCurrentPrice($faker->randomFloat(
                 2,
@@ -39,7 +39,7 @@ class AppFixtures extends Fixture
                 $deals[$i]->getFullPrice()
             ));
             $deals[$i]->setDegres($faker->numberBetween($min = 0, $max = 500));
-            $deals[$i]->setTitle($faker->title());
+            $deals[$i]->setTitle($faker->realText(30));
             $deals[$i]->setDescription($faker->text(255));
             $deals[$i]->setCreatedAt(date_create_immutable($faker->dateTimeThisMonth()->format(DATE_ATOM)));
 
