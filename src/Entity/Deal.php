@@ -46,10 +46,6 @@ class Deal
     #[ORM\JoinColumn(nullable: false)]
     private ?User $owner = null;
 
-    #[ORM\ManyToOne(inversedBy: 'deals')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?User $dealowner = null;
-
     public function __construct()
     {
         $this->comments = new ArrayCollection();
@@ -194,18 +190,6 @@ class Deal
     public function setOwner(?User $owner): self
     {
         $this->owner = $owner;
-
-        return $this;
-    }
-
-    public function getDealowner(): ?User
-    {
-        return $this->dealowner;
-    }
-
-    public function setDealowner(?User $dealowner): self
-    {
-        $this->dealowner = $dealowner;
 
         return $this;
     }
