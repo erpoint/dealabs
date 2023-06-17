@@ -16,11 +16,13 @@ security:
       # 'pattern' is a regular expression matched against the incoming
       # request URL. If there's a match, authentication is triggered
       lazy: true
-      #pattern: ^/login
+      pattern: ^/(login|logout|create-deal)$
       provider: app_user_provider
       custom_authenticator: App\Security\AppCustomAuthenticator
-      #logout:
-        #path: app_logout
+      logout:
+        path: app_logout
+        target: app_login
+        invalidate_session: true
         # where to redirect after logout
       #form_login:
         # "app_login" is the name of the route created previously

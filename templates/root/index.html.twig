@@ -28,6 +28,11 @@
             margin-right: 10px;
     }
 
+    .flex-center {
+            display: flex;
+            justify-content: center;
+    }
+
     .title {
             font-style: italic;
             font-weight: bold;
@@ -38,8 +43,17 @@
             color: firebrick;
             font-weight: bold;
     }
-</style>
 
+    .create-deal {
+            background-color: limegreen;
+            color: black;
+            border: 2px solid black;
+            border-radius: 6px;
+            padding: 5px;
+            text-decoration: none;
+    }
+</style>
+<a class="create-deal" href="{{ path('app_create_deal') }}">+ Nouveau Deal</a>
 <div class="flex-center">
 <div class="deal-grid">
     {% for deal in deals %}
