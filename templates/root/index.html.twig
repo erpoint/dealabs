@@ -52,7 +52,38 @@
             padding: 5px;
             text-decoration: none;
     }
+
+    #tabContainer {
+            margin: 50px;
+    }
+
+    .mr_tabs {
+            margin-right: 15%;
+    }
+
+    .font_tabs {
+            font-family: "Trebuchet MS", serif;
+            font-size: 30px;
+    }
 </style>
+
+{% if tabSelected == 'all deals' %}
+        <div id="tabContainer">
+                <div class="flex-center">
+                        <a class="neutral_a font_tabs mr_tabs" href="{{ path('app_root') }}"><strong>Tous les Deals</strong></a>
+                        <a class="neutral_a font_tabs" href="{{ path('app_a_la_une') }}">À la une</a>
+                </div>
+                <hr>
+        </div>
+{% elseif (tabSelected == 'a la une') %}
+        <div id="tabContainer">
+                <div class="flex-center">
+                        <a class="neutral_a font_tabs mr_tabs" href="{{ path('app_root') }}">Tous les Deals</a>
+                        <a class="neutral_a font_tabs" href="{{ path('app_a_la_une') }}"><strong>À la une</strong></a>
+                </div>
+                <hr>
+        </div>
+{% endif %}>
 <a class="create-deal" href="{{ path('app_create_deal') }}">+ Nouveau Deal</a>
 <div class="flex-center">
 <div class="deal-grid">
