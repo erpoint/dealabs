@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Create Deal{% endblock %}
+
+{% block body %}
+    <h1>Create a new deal</h1>
+
+    {{ form_start(form) }}
+    {{ form_row(form.link) }}
+    {{ form_row(form.fullPrice) }}
+    {{ form_row(form.currentPrice) }}
+    {{ form_row(form.degres) }}
+    {{ form_row(form.title) }}
+    {{ form_row(form.description) }}
+    {{ form_row(form.image) }}
+
+    <button type="submit" class="btn">Save</button>
+    {{ form_end(form) }}
+{% endblock %}
