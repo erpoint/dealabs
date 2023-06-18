@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MyAccountController!{% endblock %}
+
+{% block body %}
+    <style>
+        {% include "my_account/account.css" %}
+    </style>
+    <h2>Mon compte</h2>
+    <main>
+        <div class="account_set_user_form">
+            {{ form_start(accountForm) }}
+                {{ form_row(accountForm.login) }}
+                {{ form_row(accountForm.email) }}
+            <button type="submit" class="btn">Modifier !</button>
+            {{ form_end(accountForm) }}
+        </div>
+        <div class="account_set_password_form">
+            {{ form_start(passwordForm) }}
+                {{ form_row(passwordForm.password) }}
+                <button type="submit" class="btn">Modifier le mot de passe</button>
+            {{ form_end(passwordForm) }}
+        </div>
+    </main>
+{% endblock %}

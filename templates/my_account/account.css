@@ -1,0 +1,28 @@
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+main form{
+    margin-bottom: 16%;
+}
+
+main form div {
+    display: flex;
+    flex-direction: column;
+    padding-top: 8px;
+}
+
+main form button{
+    background-color: #2198CC;
+    margin: 5px;
+    padding: 5px;
+    width: 100%;
+    border: none;
+}
+
+main form button:hover{
+    cursor: pointer;
+}
