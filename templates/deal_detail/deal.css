@@ -1,0 +1,79 @@
+h2{
+    margin-left: 5%;
+}
+main {
+    width: 80%;
+    margin-left: 10%;
+    display: flex;
+    flex-direction: column;
+}
+.deal_desc{
+    display: flex;
+    flex-direction: row;
+}
+.deal_desc .deal_desc_text p{
+    max-width: 80%;
+}
+.deal_desc .image_container{
+    display: flex;
+    justify-content: space-between;
+    gap: 10%;
+}
+.deal_desc .image_container img{
+    width: 320px;
+    height: 180px;
+    justify-content: center;
+    align-self: center;
+}
+.specs{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    text-align: right;
+    margin-top: 16px;
+}
+.specs .deal_degrees{
+    color: firebrick;
+    font-weight: bold;
+}
+.specs .goto_external_deal{
+    background-color: goldenrod;
+    color: black;
+    text-decoration: none;
+    padding: 4px 8px;
+    border-radius: 8px;
+}
+.comment{
+    border: solid;
+    border-radius: 8px ;
+    padding: 16px;
+    margin-top: 8px;
+}
+.comment_header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.comment_header .comment_login {
+    font-weight: bold;
+}
+.comment_header .comment_date{
+    font-style: italic;
+}
+.comment_content{
+    width: 80%;
+    margin-left: 10%;
+    text-align: justify;
+}
+.deal_degrees form{
+    display: flex;
+    justify-content: space-around;
+}
+.deal_degrees button{
+    background: none;
+    border: none;
+    font-weight: bold;
+}
+.deal_degrees button:hover{
+    cursor: pointer;
+}
