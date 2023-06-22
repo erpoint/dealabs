@@ -92,6 +92,14 @@
         </div>
         <div>
             <h3>Commentaires</h3>
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <div>
+                    {{ form_start(addCommForm) }}
+                        {{ form_row(addCommForm) }}
+                        <button type="submit" class="btn">Comment</button>
+                    {{ form_end(addCommForm) }}
+                </div>
+            {% endif %}
             {% for comment in deal.comments %}
                 <div class="comment">
                     <div class="comment_header"><span class="comment_login">{{ comment.theuser.login }}</span> <span class="comment_date">{{ comment.createdAt|date("d/m/Y") }}</span></div>
