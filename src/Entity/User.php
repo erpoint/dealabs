@@ -42,11 +42,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'theuser', targetEntity: Comment::class, orphanRemoval: true)]
     private Collection $comments;
 
-    #[ORM\OneToMany(mappedBy: 'dealowner', targetEntity: Deal::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'owner', targetEntity: Deal::class, orphanRemoval: true)]
     private Collection $deals;
 
     #[ORM\Column]
-    private ?bool $is_verified = false;
+    private ?bool $isVerified = false;
 
     #[Pure]
     public function __construct()
@@ -224,6 +224,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function isIsVerified(): ?bool
     {
-        return $this->is_verified;
+        return $this->isVerified;
     }
 }
