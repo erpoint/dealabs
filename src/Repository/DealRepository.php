@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\Comment;
 use App\Entity\Deal;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -37,6 +38,12 @@ class DealRepository extends ServiceEntityRepository
         if ($flush) {
             $this->getEntityManager()->flush();
         }
+    }
+
+    public function addComment(Comment $comment, int $dealId, bool $flush = false){
+        $deal = $this->getEntityManager()->find(Deal::class, $dealId);
+        $deal->addComment($comment);
+        $this->getEntityManager()->persist($deal);
     }
 
 //    /**
