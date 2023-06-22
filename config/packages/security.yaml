@@ -1,4 +1,5 @@
 security:
+  enable_authenticator_manager: true
   password_hashers:
     App\Entity\User:
       algorithm: auto
@@ -11,6 +12,18 @@ security:
         property: email
 
   firewalls:
+    login:
+      pattern: ^/api/login
+      stateless: true
+      json_login:
+        check_path: /api/login_check
+        success_handler: lexik_jwt_authentication.handler.authentication_success
+        failure_handler: lexik_jwt_authentication.handler.authentication_failure
+
+    api:
+      pattern: ^/api
+      stateless: true
+      jwt: ~
     # 'main' is the name of the firewall (can be chosen freely)
     main:
       # 'pattern' is a regular expression matched against the incoming
