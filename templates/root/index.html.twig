@@ -3,14 +3,14 @@
 {% block title %}Hello RootController!{% endblock %}
 
 {% block body %}
-<style>
-    .deal-grid {
+    <style>
+        .deal-grid {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
             grid-gap: 75px;
-    }
+        }
 
-    .one-deal a{
+        .click_one_deal {
             display: flex;
             justify-content: center;
             flex-direction: column;
@@ -18,78 +18,120 @@
             border-style: solid;
             border-radius: 10px;
             padding: 10px;
-    }
-    .one-deal img{
+        }
+
+        .one-deal img {
             max-width: 100%;
-    }
-    h1 {
+        }
+
+        h1 {
             display: flex;
             justify-content: center;
             margin-right: 10px;
-    }
+        }
 
-    .flex-center {
+        .flex-center {
             display: flex;
             justify-content: center;
-    }
+        }
 
-    .title {
+        .title {
             font-style: italic;
             font-weight: bold;
             font-size: 25px;
-    }
+        }
 
-    .degres {
+        .degres {
             color: firebrick;
             font-weight: bold;
-    }
+        }
 
-    .create-deal {
+        .create-deal {
             background-color: limegreen;
             color: black;
             border: 2px solid black;
             border-radius: 6px;
             padding: 5px;
             text-decoration: none;
-    }
+            font-family: "Trebuchet MS", serif;
+            margin-left: 20px;
+        }
 
-    #tabContainer {
+        .m2 {
+            margin: 20px;
+        }
+
+        #tabContainer {
             margin: 50px;
-    }
+        }
 
-    .mr_tabs {
+        .mr_tabs {
             margin-right: 15%;
-    }
+        }
 
-    .font_tabs {
+        .font_tabs {
             font-family: "Trebuchet MS", serif;
             font-size: 30px;
-    }
-</style>
+        }
 
-{% if tabSelected == 'all deals' %}
+        .outerDiv {
+            display: flex;
+            width: 95%;
+            justify-content: space-between;
+        }
+
+        #searchLabel {
+            font-family: "Trebuchet MS", serif;
+            margin: 5px;
+        }
+    </style>
+
+    {% if tabSelected == 'all deals' %}
         <div id="tabContainer">
-                <div class="flex-center">
-                        <a class="neutral_a font_tabs mr_tabs" href="{{ path('app_root') }}"><strong>Tous les Deals</strong></a>
-                        <a class="neutral_a font_tabs" href="{{ path('app_a_la_une') }}">À la une</a>
-                </div>
-                <hr>
+            <div class="flex-center">
+                <a class="neutral_a font_tabs mr_tabs" href="{{ path('app_root') }}"><strong>Tous les Deals</strong></a>
+                <a class="neutral_a font_tabs" href="{{ path('app_a_la_une') }}">À la une</a>
+            </div>
+            <hr>
         </div>
-{% elseif (tabSelected == 'a la une') %}
+        <div class="m2 outerDiv">
+            <a class="create-deal" href="{{ path('app_create_deal') }}">+ Nouveau Deal</a>
+            <div id="searchDiv">
+                <form id="searchForm" action="{{ path('app_search_all_deal') }}">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                    </svg>
+                    <label id="searchLabel" for="textInput">Rechercher un Deal</label>
+                    <input id="textInput" name="textInput" type="search" />
+                </form>
+            </div>
+        </div>
+    {% elseif (tabSelected == 'a la une') %}
         <div id="tabContainer">
-                <div class="flex-center">
-                        <a class="neutral_a font_tabs mr_tabs" href="{{ path('app_root') }}">Tous les Deals</a>
-                        <a class="neutral_a font_tabs" href="{{ path('app_a_la_une') }}"><strong>À la une</strong></a>
-                </div>
-                <hr>
+            <div class="flex-center">
+                <a class="neutral_a font_tabs mr_tabs" href="{{ path('app_root') }}">Tous les Deals</a>
+                <a class="neutral_a font_tabs" href="{{ path('app_a_la_une') }}"><strong>À la une</strong></a>
+            </div>
+            <hr>
         </div>
-{% endif %}>
-<a class="create-deal" href="{{ path('app_create_deal') }}">+ Nouveau Deal</a>
-<div class="flex-center">
-<div class="deal-grid">
-    {% for deal in deals %}
-        <div class="one-deal">
-                <a class="neutral_a" href="/deal/{{ deal.id }}">
+        <div class="m2 outerDiv">
+            <a class="create-deal" href="{{ path('app_create_deal') }}">+ Nouveau Deal</a>
+            <div id="searchDiv">
+                <form id="searchForm" action="{{ path('app_search_a_la_une_deal') }}">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                    </svg>
+                    <label id="searchLabel" for="textInput">Rechercher un Deal</label>
+                    <input id="textInput" name="textInput" type="search" />
+                </form>
+            </div>
+        </div>
+    {% endif %}
+    <div class="flex-center">
+        <div class="deal-grid">
+            {% for deal in deals %}
+                <div class="one-deal">
+                    <a class="neutral_a click_one_deal" href="/deal/{{ deal.id }}">
                         <p class="flex-center title">{{ deal.title }}</p>
                         <img class="flex-center" src="{{ deal.image }}" alt="{{ deal.title }}">
                         <p class="flex-center">{{ deal.description }}</p>

@@ -7,19 +7,39 @@
         {% include "my_account/account.css" %}
     </style>
     <h2>Mon compte</h2>
-    <main>
-        <div class="account_set_user_form">
-            {{ form_start(accountForm) }}
+
+    {% if tabSelected == 'accountParameters' %}
+        <div id="tabContainer">
+            <div class="flex-center">
+                <a class="neutral_a font_tabs mr_tabs" href="{{ path('app_my_account') }}"><strong>Paramètres de compte</strong></a>
+                <a class="neutral_a font_tabs" href="{{ path('app_account_alerts') }}">Mes alertes</a>
+            </div>
+            <hr>
+        </div>
+
+        <main>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/User_font_awesome.svg/768px-User_font_awesome.svg.png"/>
+            <div class="account_set_user_form">
+                {{ form_start(accountForm) }}
                 {{ form_row(accountForm.login) }}
                 {{ form_row(accountForm.email) }}
-            <button type="submit" class="btn">Modifier !</button>
-            {{ form_end(accountForm) }}
-        </div>
-        <div class="account_set_password_form">
-            {{ form_start(passwordForm) }}
+                <button type="submit" class="btn">Modifier !</button>
+                {{ form_end(accountForm) }}
+            </div>
+            <div class="account_set_password_form">
+                {{ form_start(passwordForm) }}
                 {{ form_row(passwordForm.password) }}
                 <button type="submit" class="btn">Modifier le mot de passe</button>
-            {{ form_end(passwordForm) }}
+                {{ form_end(passwordForm) }}
+            </div>
+        </main>
+    {% elseif (tabSelected == 'accountAlerts') %}
+        <div id="tabContainer">
+            <div class="flex-center">
+                <a class="neutral_a font_tabs mr_tabs" href="{{ path('app_my_account') }}">Paramètres de compte</a>
+                <a class="neutral_a font_tabs" href="{{ path('app_account_alerts') }}"><strong>Mes alertes</strong></a>
+            </div>
+            <hr>
         </div>
-    </main>
+    {% endif %}
 {% endblock %}

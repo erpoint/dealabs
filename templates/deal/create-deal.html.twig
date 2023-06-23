@@ -3,17 +3,68 @@
 {% block title %}Create Deal{% endblock %}
 
 {% block body %}
-    <h1>Create a new deal</h1>
+    <style>
+        {% include "deal/create-deal.css" %}
+    </style>
+    <h1 id="page_title">Create a new deal</h1>
+    <div id="wrapperDiv">
+        <div id="outsideDiv">
+            <div id="main">
+                <div style="width: 10%">
+                    {{ form_start(form) }}
+                    <div onkeyup="updatePreview()" class="field_div">{{ form_row(form.link) }} </div>
+                    <div onkeyup="updatePreview()" class="field_div">{{ form_row(form.fullPrice) }} </div>
+                    <div onkeyup="updatePreview()" class="field_div">{{ form_row(form.currentPrice) }} </div>
+                    <div onkeyup="updatePreview()" class="field_div">{{ form_row(form.degres) }} </div>
+                    <div onkeyup="updatePreview()" class="field_div">{{ form_row(form.title) }} </div>
+                    <div onkeyup="updatePreview()" class="field_div">{{ form_row(form.description) }} </div>
+                    <div onkeyup="updatePreview()" class="field_div">
+                        <p style="width: 200px;">(entrez une url d'image)</p>
+                        {{ form_row(form.image) }}
+                    </div>
 
-    {{ form_start(form) }}
-    {{ form_row(form.link) }}
-    {{ form_row(form.fullPrice) }}
-    {{ form_row(form.currentPrice) }}
-    {{ form_row(form.degres) }}
-    {{ form_row(form.title) }}
-    {{ form_row(form.description) }}
-    {{ form_row(form.image) }}
+                    <div class="flex-center ml2">
+                        <button type="submit" class="btn btn_save">Save</button>
+                    </div>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+            <hr class="verticalLine" />
+            <div id="preview">
+                <div class="div_one_deal">
+                    <p id="preview_title" class="flex-center title"></p>
+                    <img id="preview_img" class="flex-center" alt="" src="">
+                    <p id="preview_description" class="flex-center"></p>
+                    <p id="preview_fullPrice" class="flex-center"></p>
+                    <p id="preview_currentPrice" class="flex-center"></p>
+                    <p id="preview_degres" class="flex-center degres"></p>
+                </div>
+                <script>
+                    function updatePreview() {
+                        // Récupérer la valeur du champ de saisie
+                        let inputTextTitle = document.getElementById("create_deal_form_title").value;
+                        let inputTextDescription = document.getElementById("create_deal_form_description").value;
+                        let inputTextFullPrice = document.getElementById("create_deal_form_fullPrice").value;
+                        let inputTextCurrentPrice = document.getElementById("create_deal_form_currentPrice").value;
+                        let inputTextDegres = document.getElementById("create_deal_form_degres").value;
+                        let inputTextImgUrl = document.getElementById("create_deal_form_image").value;
 
-    <button type="submit" class="btn">Save</button>
-    {{ form_end(form) }}
+                        // Mettre à jour l'aperçu avec la valeur du champ de saisie
+                        let previewTitle = document.getElementById("preview_title");
+                        previewTitle.innerText = inputTextTitle;
+                        let previewDescription = document.getElementById("preview_description");
+                        previewDescription.innerText = inputTextDescription;
+                        let previewFullPrice = document.getElementById("preview_fullPrice");
+                        previewFullPrice.innerHTML = "Prix avant réduction : <strong>"+inputTextFullPrice+"€</strong>";
+                        let previewCurrentPrice = document.getElementById("preview_currentPrice");
+                        previewCurrentPrice.innerHTML = "Prix Courant : <strong>"+inputTextCurrentPrice+"€</strong>";
+                        let previewDegres = document.getElementById("preview_degres");
+                        previewDegres.innerText = inputTextDegres+"°";
+                        let previewImg = document.getElementById("preview_img");
+                        previewImg.setAttribute('src', inputTextImgUrl);
+                    }
+                </script>
+            </div>
+        </div>
+    </div>
 {% endblock %}

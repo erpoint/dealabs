@@ -1,0 +1,71 @@
+#main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.ml2 {
+    margin-left: 75px;
+}
+
+label {
+    min-width: 200px;
+}
+
+.field_div {
+    min-width: 100px;
+    margin: 1%;
+    font-family: "Trebuchet MS", serif;
+    font-size: medium;
+}
+
+label {
+    font-family: "Trebuchet MS", serif;
+    font-size: medium;
+}
+
+#page_title {
+    margin-left: 5%;
+}
+
+.btn_save {
+    margin-top: 30px;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 8px;
+    background-color: limegreen;
+    color: black;
+    font-family: "Trebuchet MS", serif;
+    font-size: medium;
+}
+
+#wrapperDiv {
+    display: flex;
+    justify-content: center;
+}
+
+#outsideDiv {
+    display: flex;
+    justify-content: center;
+    width: 60%;
+}
+
+.div_one_deal {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 325px;
+    border-style: solid;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.one-deal img {
+    max-width: 100%;
+}
+
+.degres {
+    color: firebrick;
+    font-weight: bold;
+}
