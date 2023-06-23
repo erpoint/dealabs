@@ -5,19 +5,41 @@
     app.request.attributes.get('_route_params')) %}
 <header>
     <div class="flex-spread">
-        <div></div>
-        <a class="neutral_a" href="/">
+        <div style="width: 10%;"></div>
+        <a class="neutral_a header_title" href="/">
             <h1>Deals</h1>
             <svg class="icon" width="40px" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img"><path d="M90.72 82.34c4.4 7 1.29 12.66-7 12.66H16.25C8 95 4.88 89.31 9.28 82.34l29.47-46.46V12.5H35A3.75 3.75 0 0135 5h30a3.75 3.75 0 010 7.5h-3.75v23.38zM45.08 39.86L29.14 65h41.72L54.92 39.86l-1.17-1.81V12.5h-7.5v25.55z" fill="currentColor"/></svg>
         </a>
-        <div>
+        <div class="header_icons">
             {% if app.user %}
-                {% if currentPath != "/account" %}
-                    <a href="/account">mon compte</a>
+                {% if currentPath != "/account/alerts" %}
+                    <div class="div_inline">
+                        <a class="a_img" href="/account/alerts">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-bell-fill header_img" viewBox="0 0 16 16">
+                                <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/>
+                            </svg>
+                        </a>
+                        <div class="icon_red_dot"></div>
+                    </div>
                 {% endif %}
-                <a href="/logout">logout</a>
+                {% if currentPath != "/account" %}
+                    <a class="a_img" href="/account">
+                        <img class="header_img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/User_font_awesome.svg/768px-User_font_awesome.svg.png"/>
+                    </a>
+                {% endif %}
+                <a class="a_img" href="/logout">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-box-arrow-right header_img" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
+                        <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+                    </svg>
+                </a>
             {% else %}
-                <a href="/login">login</a>
+                <a class="a_img" href="/login">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-box-arrow-in-right header_img" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z"/>
+                        <path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+                    </svg>
+                </a>
             {% endif %}
         </div>
     </div>

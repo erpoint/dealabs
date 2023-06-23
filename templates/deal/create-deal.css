@@ -1,0 +1,32 @@
+#main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.field_div {
+    margin: 0.5%;
+    font-family: "Trebuchet MS", serif;
+    font-size: medium;
+}
+
+label {
+    font-family: "Trebuchet MS", serif;
+    font-size: medium;
+}
+
+#page_title {
+    margin-left: 5%;
+}
+
+.btn_save {
+    margin-top: 30px;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 8px;
+    background-color: limegreen;
+    color: black;
+    font-family: "Trebuchet MS", serif;
+    font-size: medium;
+}

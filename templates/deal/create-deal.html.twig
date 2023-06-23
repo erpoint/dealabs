@@ -3,17 +3,28 @@
 {% block title %}Create Deal{% endblock %}
 
 {% block body %}
-    <h1>Create a new deal</h1>
+    <style>
+        {% include "deal/create-deal.css" %}
+    </style>
+    <h1 id="page_title">Create a new deal</h1>
+    <div id="main">
+        <div style="width: 10%">
+            <div class="field_div">{{ form_start(form) }} </div>
+            <div class="field_div">{{ form_row(form.link) }} </div>
+            <div class="field_div">{{ form_row(form.fullPrice) }} </div>
+            <div class="field_div">{{ form_row(form.currentPrice) }} </div>
+            <div class="field_div">{{ form_row(form.degres) }} </div>
+            <div class="field_div">{{ form_row(form.title) }} </div>
+            <div class="field_div">{{ form_row(form.description) }} </div>
+            <div class="field_div">
+                <p>(entrez une url d'image)</p>
+                {{ form_row(form.image) }}
+            </div>
 
-    {{ form_start(form) }}
-    {{ form_row(form.link) }}
-    {{ form_row(form.fullPrice) }}
-    {{ form_row(form.currentPrice) }}
-    {{ form_row(form.degres) }}
-    {{ form_row(form.title) }}
-    {{ form_row(form.description) }}
-    {{ form_row(form.image) }}
-
-    <button type="submit" class="btn">Save</button>
-    {{ form_end(form) }}
+            <div class="flex-center">
+                <button type="submit" class="btn btn_save">Save</button>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
 {% endblock %}

@@ -17,3 +17,37 @@
 h1 {
     font-family: "Trebuchet MS", serif;
 }
+
+.header_img {
+    width: 40px;
+    height: 40px;
+}
+
+.a_img{
+    color: inherit;
+    font-style: inherit;
+    text-decoration: none;
+}
+
+.icon_red_dot {
+    display: flex;
+    align-self: flex-start;
+    flex-direction: column;
+    width: 13px;
+    height: 13px;
+    background-color: red;
+    border-radius: 50px;
+    position: absolute;
+    z-index: 1;
+}
+
+.div_inline {
+    display: inline-flex;
+    justify-content: end;
+    align-items: center;
+    flex-direction: row;
+}
+
+.flex-inline {
+    display: inline-flex;
+}

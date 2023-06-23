@@ -26,3 +26,38 @@ main form button{
 main form button:hover{
     cursor: pointer;
 }
+
+main img {
+    width: 100px;
+    height: 100px;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+}
+
+#tabContainer {
+    margin: 50px;
+}
+
+.neutral_a{
+    color: inherit;
+    font-style: inherit;
+    text-decoration: inherit;
+    display: inherit;
+}
+
+.mr_tabs {
+    margin-right: 15%;
+}
+
+.font_tabs {
+    font-family: "Trebuchet MS", serif;
+    font-size: 20px;
+}
+
+h2 {
+    font-family: "Trebuchet MS", serif;
+    margin-left: 20px;
+}

@@ -41,7 +41,17 @@ class MyAccountController extends AbstractController
         return $this->render('my_account/index.html.twig', [
             'controller_name' => 'MyAccountController',
             'accountForm' => $formAccount->createView(),
-            'passwordForm' => $formPassword->createView()
+            'passwordForm' => $formPassword->createView(),
+            'tabSelected' => 'accountParameters'
+        ]);
+    }
+
+    #[Route('/account/alerts', name: 'app_account_alerts')]
+    public function alerts(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        return $this->render('my_account/index.html.twig', [
+            'controller_name' => 'MyAccountController',
+            'tabSelected' => 'accountAlerts'
         ]);
     }
 }
